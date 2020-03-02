@@ -1,6 +1,6 @@
 /*** FORWARD CHAINING ***/
 /************************/
-/* Install your IF clauses in squence in the middle of
+/* Install your IF clauses in sequence in the middle of
 the program within the first case statement.
 EXAMPLE: IF ((A1==2) && (A2==6) || (A3 == 'YES')) S-1;
 IF (J=='NO') S-1;
@@ -9,24 +9,31 @@ The THEN part of the above construction always contains
 S-1. Install your THEN clauses in sequence in the middle
 of the progrram within the second case statement. */
 
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
 int flag;
 char cndvar[10][3];
-char varlt[10][3], /* variable list*/ clvarlt[40][3]; /* clause var list */
-char c[3], vp[3], /* condition variable */  v[3]; /*variable */
+char variable_list[10][3];
+char clause_variable_list[40][3];
+char c[3], vp[3];           /* condition variable */
+char v[3];                  /* variable */
 char fedint[10], interest[10], stock[10], dollar[10], fedmon[10];
-char po[10], /* position */  qu[10]; /* qualify */
-int instlt[10];         /* instantiated list*/
-int f, i, j, k, s, fp   /* front pointer */;
-int  bp  /* back pointer */,  gr /* grade */,  sn; /* statement number */
-int cn;  /* clause number */
+char po[10];                /* position */
+char qu[10];                /* qualify */
+int instantiated_list[10];  /* instantiated list*/
+int f, i, j, k, s;
+int fp;                     /* front pointer */
+int  bp;                    /* back pointer */
+int gr;                     /* grade */
+int sn;                     /* statement number */
+int cn;                     /* clause number */
 
 void search(void);
 void check_instantiation(void);
 void instantiate(void);
 
-main()
+int main()
 {
     /******** INITIALIZATION SECTION ***********/
     fp=1;
@@ -233,6 +240,7 @@ main()
         goto b496;
     }
     /* no more conclusion variables on queue */
+    return 0;
 }
 
 //==========================================================================
@@ -332,6 +340,6 @@ void instantiate()
     }
 }
 //
-// Created by lowor on 3/1/2020.
+// Created by Victor Hernandez, Jr. on 3/1/2020.
 //
 
