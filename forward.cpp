@@ -13,18 +13,18 @@ of the progrram within the second case statement. */
 using namespace std;
 
 int flag;
-char cndvar[10][3];
-char variable_list[10][3];
-char clause_variable_list[40][3];
+char cndvar[10][3];         /* what is this? */
+string variable_list[10][7]; // 10 majors and 7 variables used in each major
+char clause_variable_list[40][3];   //TODO figure out array size
 char c[3], vp[3];           /* condition variable */
 char v[3];                  /* variable */
 char fedint[10], interest[10], stock[10], dollar[10], fedmon[10];
 char po[10];                /* position */
 char qu[10];                /* qualify */
 int instantiated_list[10];  /* instantiated list*/
-int f, i, j, k, s;
+int f, j, k, s;
 int fp;                     /* front pointer */
-int  bp;                    /* back pointer */
+int bp;                     /* back pointer */
 int gr;                     /* grade */
 int sn;                     /* statement number */
 int cn;                     /* clause number */
@@ -36,22 +36,18 @@ void instantiate(void);
 int main()
 {
     /******** INITIALIZATION SECTION ***********/
-    fp=1;
-    bp=1;
+    fp = 1;
+    bp = 1;
 
-    for (i=1;i < 41; i++)
-        strcpy(clvarlt[i], "");
-    for (i=1;i < 11; i++)
-        strcpy(cndvar[i], "");
-    for (i=1;i < 11; i++)
-        strcpy(instlt[i], "");
-    for (i=1;i < 11; i++)
-        strcpy(varlt[i], "");
-    for (i=1;i < 11; I++)
+    for (int i = 1; i < 41; i++)
     {
-        strcpy(cndvar[i], "");
-        strcpy(varlt[i], "");
-        strcpy (instlt[i], "");
+        clause_variable_list[i] = "";
+    }
+    for (int i = 1; i < 11; i++)
+    {
+        cndvar[i] = "";
+        instantiated_list[i] = "";
+        variable_list[i] = "";
     }
 
     /* enter variables which are in the IF part, 1 at a time in
@@ -59,12 +55,26 @@ int main()
     IF statement. Do not duplicate any variable names. Any
     name is used only once. If no more variables left, just
     hit return key */
-    /****** comment 367 *************/
-    strcpy(varlt[1], "DO");
-    strcpy(varlt[2], "FT");
-    strcpy(varlt[3], "FM");
-    strcpy(varlt[4], "IN");
-    strcpy(varlt[5], "ST");
+
+    /* VARIABLE LIST */
+
+    // SCIENCE
+    variable_list[0][0] = "natural";
+    variable_list[0][1] = "outerspace";
+    variable_list[0][2] = "motion";
+    variable_list[0][3] = "organisms";
+    variable_list[0][4] = "composition";
+    variable_list[0][5] = "reactions";
+    variable_list[0][6] = "rocks";
+
+    // HEALTH
+    variable_list[1][0] = "aid";
+    variable_list[1][1] = "health";
+    variable_list[1][2] = "teeth";
+    variable_list[1][3] = "eyes";
+    variable_list[1][4] = "research";
+    variable_list[1][5] = "drugs";
+    variable_list[1][6] = "animals";
 
     printf("*** VARIABLE LIST ***\n");
     for (i=1;i < 11; i++)
