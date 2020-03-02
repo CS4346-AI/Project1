@@ -13,21 +13,22 @@ of the progrram within the second case statement. */
 using namespace std;
 
 int flag;
-char cndvar[10][3];         /* what is this? */
-string variable_list[10][7]; // 10 majors and 7 variables used in each major
-char clause_variable_list[40][3];   //TODO figure out array size
+string cndvar[10][3];               /* what is this? */
+string variable_list[10][7];        // 10 majors and 7 variables used in each major
+string clause_variable_list[200];   // each rule allots 4 spaces and each major has 5 rules
+                                    // (10 majors * 5 rules * 4 spaces = 200)
 char c[3], vp[3];           /* condition variable */
 char v[3];                  /* variable */
 char fedint[10], interest[10], stock[10], dollar[10], fedmon[10];
 char po[10];                /* position */
 char qu[10];                /* qualify */
 int instantiated_list[10];  /* instantiated list*/
-int f, j, k, s;
-int fp;                     /* front pointer */
-int bp;                     /* back pointer */
-int gr;                     /* grade */
-int sn;                     /* statement number */
-int cn;                     /* clause number */
+int f, s;
+int fp;         /* front pointer */
+int bp;         /* back pointer */
+int gr;         /* grade */
+int sn;         /* statement number */
+int cn;         /* clause number */
 int user_input;
 
 void search(void);
@@ -40,15 +41,24 @@ int main()
     fp = 1;
     bp = 1;
 
-    for (int i = 1; i < 41; i++)
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            cndvar[i][j] = "";
+        }
+
+        for (int k = 0; k < 7; k++)
+        {
+            variable_list[i][k] = "";
+        }
+
+        instantiated_list[i] = 0;
+    }
+
+    for (int i = 0; i < 200; i++)
     {
         clause_variable_list[i] = "";
-    }
-    for (int i = 1; i < 11; i++)
-    {
-        cndvar[i] = "";
-        instantiated_list[i] = "";
-        variable_list[i] = "";
     }
 
     /* enter variables which are in the IF part, 1 at a time in
@@ -80,41 +90,61 @@ int main()
     cout <<  "*** VARIABLE LIST ***" << endl;
     for (int i = 0; i < 10; i++)
     {
-        for (int j = 0; j < 7; j++)
-        {
-            cout << "ENTER VARIABLE [" << i << "] [" << j << "] " << variable_list[i][j] << endl;
+        for (int j = 0; j < 7; j++) {
+            if (variable_list[i][j] == "")
+                continue;
+            cout << "ENTER VARIABLE [" << i << "][" << j << "]: " << variable_list[i][j] << endl;
         }
     }
-    printf("HIT RETURN TO CONTINUE");
-    cout << ;
-    getchar();
+    cout << "HIT RETURN TO CONTINUE";
+    cin.ignore();
+
 
     /* enter variables as they appear in the IF clauses, Up to 3
     variables per IF statement. If no more variables left, just
     hit return key */
-    /****** comment 407, 408 *************/
-    strcpy(clvarlt[1], "IN");
-    strcpy(clvarlt[5], "IN");
-    strcpy(clvarlt[9], "DO");
-    strcpy(clvarlt[13], "DO");
-    strcpy(clvarlt[17], "FT");
-    strcpy(clvarlt[18], "FM");
-    printf("*** CLAUSE-VARIABLE LIST ***\n");
-    for (i = 1; i < 9; i++)
-    {
-        printf("** CLAUSE %d\n", i);
-        for (j = 1; j < 5; j++)
-        {
-            k = 4 * (i - 1) + j;
-            printf("VARIABLE %d  %s\n", j, clvarlt[k]);
-        }
 
-        if (i==4)
+    /* CLAUSE VARIABLE LIST */
+
+    // SCIENCE
+    clause_variable_list[0] = "natural";
+    clause_variable_list[1] = "outerspace";
+    clause_variable_list[4] = "natural";
+    clause_variable_list[5] = "motion";
+    clause_variable_list[8] = "natural";
+    clause_variable_list[9] = "organisms";
+    clause_variable_list[12] = "composition";
+    clause_variable_list[13] = "reactions";
+    clause_variable_list[16] = "composition";
+    clause_variable_list[17] = "rocks";
+
+    // HEALTH
+    clause_variable_list[20] = "aid";
+    clause_variable_list[21] = "health";
+    clause_variable_list[24] = "aid";
+    clause_variable_list[25] = "teeth";
+    clause_variable_list[28] = "aid";
+    clause_variable_list[29] = "eyes";
+    clause_variable_list[32] = "research";
+    clause_variable_list[33] = "drugs";
+    clause_variable_list[36] = "research";
+    clause_variable_list[37] = "animals";
+
+    cout <<  "*** CLAUSE-VARIABLE LIST ***" << endl;
+    int k;
+    for (int i = 0; i < 200; i++)
+    {
+        cout << "** CLAUSE " << i+1 << endl;
+        for (int j = 0; j < 4; j++)
         {
-            printf("HIT RETURN TO CONTINUE");
-            getchar();
+            k = 4 * ((i+1) - 1) + (j+1);
+            if (clause_variable_list[k-1] == "")
+                continue;
+            cout << "VARIABLE " << j+1 << ": " << clause_variable_list[k-1] << endl;
         }
     }
+    cout << "HIT RETURN TO CONTINUE";
+    cin.ignore();
 
     /****** INFERENCE SECTION *****************/
     printf("ENTER CONDITION VARIABLE? ");
