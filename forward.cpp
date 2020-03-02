@@ -28,6 +28,7 @@ int bp;                     /* back pointer */
 int gr;                     /* grade */
 int sn;                     /* statement number */
 int cn;                     /* clause number */
+int user_input;
 
 void search(void);
 void check_instantiation(void);
@@ -76,10 +77,16 @@ int main()
     variable_list[1][5] = "drugs";
     variable_list[1][6] = "animals";
 
-    printf("*** VARIABLE LIST ***\n");
-    for (i=1;i < 11; i++)
-        printf("ENTER VARIABLE   %d   %s\n", i, varlt[i]);
+    cout <<  "*** VARIABLE LIST ***" << endl;
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 7; j++)
+        {
+            cout << "ENTER VARIABLE [" << i << "] [" << j << "] " << variable_list[i][j] << endl;
+        }
+    }
     printf("HIT RETURN TO CONTINUE");
+    cout << ;
     getchar();
 
     /* enter variables as they appear in the IF clauses, Up to 3
@@ -349,6 +356,7 @@ void instantiate()
         bp=bp+1;
     }
 }
+
 //
 // Created by Victor Hernandez, Jr. on 3/1/2020.
 //
