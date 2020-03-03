@@ -7,46 +7,34 @@ IF (J=='NO') S-1;
 
 The THEN part of the above construction always contains
 S-1. Install your THEN clauses in sequence in the middle
-of the progrram within the second case statement. */
+of the program within the second case statement. */
 
 #include <iostream>
 using namespace std;
 
-int flag;
-string cndvar[10][3];               /* what is this? */
+string condition_var_queue[70];     /* condition variable queue */
 string variable_list[10][7];        // 10 majors and 7 variables used in each major
-string clause_variable_list[200];   // each rule allots 4 spaces and each major has 5 rules
-                                    // (10 majors * 5 rules * 4 spaces = 200)
-char c[3], vp[3];           /* condition variable */
-char v[3];                  /* variable */
-char fedint[10], interest[10], stock[10], dollar[10], fedmon[10];
-char po[10];                /* position */
-char qu[10];                /* qualify */
-int instantiated_list[10];  /* instantiated list*/
-int f, s;
-int fp;         /* front pointer */
-int bp;         /* back pointer */
-int gr;         /* grade */
-int sn;         /* statement number */
-int cn;         /* clause number */
-int user_input;
+string clause_variable_list[200];   // (10 majors * 5 rules * 4 spaces = 200)
 
-void search(void);
-void check_instantiation(void);
-void instantiate(void);
+string var;     // variable
+string area;    // i.e. Astronomy, Nursing, Marketing, etc.
+string natural, space, motion, organisms, composition, reactions, earth;    // SCIENCE
+string aid, health, teeth, eyes, research, drugs, animals;                  // HEALTH
+string money, recording, large_sums, wealth, people, leader, promoting;     // BUSINESS
+
+int instantiated_list[70];  /* instantiated list of variables */
+int s;
+
+void search(int*, int, int*, int*);
+void check_instantiation(string);
+void instantiate(string, int);
 
 int main()
 {
     /******** INITIALIZATION SECTION ***********/
-    fp = 1;
-    bp = 1;
-
     for (int i = 0; i < 10; i++)
     {
-        for (int j = 0; j < 3; j++)
-        {
-            cndvar[i][j] = "";
-        }
+        condition_var_queue[i] = "";
 
         for (int k = 0; k < 7; k++)
         {
@@ -71,12 +59,12 @@ int main()
 
     // SCIENCE
     variable_list[0][0] = "natural";
-    variable_list[0][1] = "outerspace";
+    variable_list[0][1] = "outer space";
     variable_list[0][2] = "motion";
     variable_list[0][3] = "organisms";
     variable_list[0][4] = "composition";
     variable_list[0][5] = "reactions";
-    variable_list[0][6] = "rocks";
+    variable_list[0][6] = "earth";
 
     // HEALTH
     variable_list[1][0] = "aid";
@@ -91,7 +79,7 @@ int main()
     for (int i = 0; i < 10; i++)
     {
         for (int j = 0; j < 7; j++) {
-            if (variable_list[i][j] == "")
+            if (variable_list[i][j].empty())
                 continue;
             cout << "ENTER VARIABLE [" << i << "][" << j << "]: " << variable_list[i][j] << endl;
         }
@@ -108,7 +96,7 @@ int main()
 
     // SCIENCE
     clause_variable_list[0] = "natural";
-    clause_variable_list[1] = "outerspace";
+    clause_variable_list[1] = "outer space";
     clause_variable_list[4] = "natural";
     clause_variable_list[5] = "motion";
     clause_variable_list[8] = "natural";
@@ -116,7 +104,7 @@ int main()
     clause_variable_list[12] = "composition";
     clause_variable_list[13] = "reactions";
     clause_variable_list[16] = "composition";
-    clause_variable_list[17] = "rocks";
+    clause_variable_list[17] = "earth";
 
     // HEALTH
     clause_variable_list[20] = "aid";
@@ -138,7 +126,7 @@ int main()
         for (int j = 0; j < 4; j++)
         {
             k = 4 * ((i+1) - 1) + (j+1);
-            if (clause_variable_list[k-1] == "")
+            if (clause_variable_list[k-1].empty())
                 continue;
             cout << "VARIABLE " << j+1 << ": " << clause_variable_list[k-1] << endl;
         }
@@ -147,143 +135,147 @@ int main()
     cin.ignore();
 
     /****** INFERENCE SECTION *****************/
-    printf("ENTER CONDITION VARIABLE? ");
-    gets(c);
-    /* place condition variable c on condition var queue cndvar */
-    strcpy(cndvar[bp], c);
-    /* move backpointer (bp) to back */
+    string user_input;
+    cout << "ENTER CONDITION VARIABLE? ";
+    cin >> user_input;
+
+    /* place condition variable user_input on condition var queue */
+    int fp = 1; // front pointer
+    int bp = 1; // back pointer
+    condition_var_queue[bp] = user_input;
+
+    /* move back pointer (bp) to the back */
     bp = bp + 1;
+
     /* set the condition variable pointer consisting of the
     statement number (sn) and the clause number (cn) */
-    sn = 1; cn = 1;
+    int sn = 1; // statement number
+    int cn = 1; // clause number
+
     /* find the next statement number containing the condition variable
-    which is in front of the queue (cndvar), this statement number
-    is located in the clause variable list (clvarlt) */
+    which is in front of the queue (condition_var_queue), this statement number
+    is located in the clause variable list (clause_variable_list) */
+
     /* start at the beginning */
-    f=1;
-    b496: search();
+    int front = 1;
+    int clause = 0;
+
+    b496: search(&sn, cn, &front, &fp);
     /* point to first clause in statement */
-    cn=1;
+    cn = 1;
     if (sn != 0)
         /* more statements */
     {
         /* locate the clause */
-        i = 4 * (sn-1) + cn;
+        clause = 4 * (sn-1) + cn;
+
         /* clause variable */
-        strcpy(v, clvarlt[i]);
+        var = clause_variable_list[clause-1];
+
         /* are there any more clauses for this statement */
-        while (strcmp(v, ""))
+        while (var.empty())
             /* more clauses */
         {
             /* check instantiation of this clause */
-            check_instantiation();
-            cn = cn+1;
+            check_instantiation(var);
+            cn++;
+
             /* check next clause */
-            i = 4 * (sn-1) + cn;
-            strcpy(v, clvarlt[i]);
+            clause = 4 * (sn-1) + cn;
+            var = clause_variable_list[clause-1];
         }
 
         /* no more clauses - check IF part of statement */
         s = 0;
+
         /* sample IF-THEN statements from the position knowledge base */
         switch(sn)
         {
-            /* statement 1 */
-            /***** comment 1500 *****/
-            case 1: if (strcmp(interest, "FALL") == 0) s=1;
+            case 1:
+                if (natural == "YES" && space == "YES")
+                    s = 1;
                 break;
-                /* statement 2 */
-                /***** comment 1510 *****/
-            case 2: if (strcmp(interest, "RISE") == 0) s=1;
+            case 2:
+                if (natural == "YES" && motion == "YES")
+                    s = 1;
                 break;
-                /* statement 3 */
-                /***** comment 1540 *****/
-            case 3: if (strcmp(dollar, "FALL") == 0) s=1;
+            case 3:
+                if (natural == "YES" && organisms == "YES")
+                    s = 1;
                 break;
-                /* statement 4 */
-                /***** comment 1550 *****/
-            case 4: if (strcmp(dollar, "RISE") == 0) s=1;
+            case 4:
+                if (composition == "YES" && reactions == "YES")
+                    s = 1;
                 break;
-                /* statement 5 */
-            case 5: if ((strcmp(fedint, "FALL") == 0) &&
-                        (strcmp(fedmon, "ADD")) == 0) s=1;
+            case 5:
+                if (composition == "YES" && earth == "YES")
+                    s = 1;
                 break;
-                /* statement 6 */
-            case 6: if ((strcmp(qu, "YES") == 0) && (gr >= 3.5) == 0) s=1;
-                break;
-                /***** comment 1610 *****/
         }
 
-        /* see if the THEN part should be inovked, i.e., s=1 */
+        /* see if the THEN part should be invoked (s = 1) */
         if (s != 1)
         {
-            f = sn + 1;
+            front = sn + 1;
             goto b496;
         }
 
         /* invoke THEN part */
         switch (sn)
         {
-            /*********** comment 1500 ***********/
             /* put variable on the conclusion variable queue */
             case 1:
-                strcpy(stock, "RISE");
-                printf("ST=RISE\n");
-                strcpy(v, "ST");
-                instantiate();
+                area = "Astronomy";
+                cout << "Area of Study = " << area << endl;
+                var = "area";
+                instantiate(var, bp);
                 break;
-                /*********** comment 1510 ***********/
                 /* put variable on the conclusion variable queue */
             case 2:
-                strcpy(stock, "FALL");
-                printf("ST=FALL\n");
-                strcpy(v, "ST");
-                instantiate();
+                area = "Physics";
+                cout << "Area of Study = " << area << endl;
+                var = "area";
+                instantiate(var, bp);
                 break;
-                /*********** comment 1540 ***********/
                 /* put variable on the conclusion variable queue */
             case 3:
-                strcpy(interest, "RISE");
-                printf("IN=RISE\n");
-                strcpy(v, "IN");
-                instantiate();
+                area = "Biology";
+                cout << "Area of Study = " << area << endl;
+                var = "area";
+                instantiate(var, bp);
                 break;
-                /*********** comment 1550 ***********/
                 /* put variable on the conclusion variable queue */
             case 4:
-                strcpy(interest, "FALL");
-                printf("IN=FALL\n");
-                strcpy(v, "IN");
-                instantiate();
+                area = "Chemistry";
+                cout << "Area of Study = " << area << endl;
+                var = "area";
+                instantiate(var, bp);
                 break;
                 /* put variable on the conclusion variable queue */
             case 5:
-                strcpy(interest, "FALL");
-                printf("IN=FALL\n");
-                strcpy(v, "IN");
-                instantiate();
+                area = "Geology";
+                cout << "Area of Study = " << area << endl;
+                var = "area";
+                instantiate(var, bp);
                 break;
-            case 6:
-                strcpy(po, "YES");
-                printf("PO=YES\n");
-                break;
-                /*********** comment 1610 ***********/
         }
-        f = sn + 1;
+        front = sn + 1;
         goto b496;
     }
 
-    /* no more clauses in the clause variable list (clvarlt)
-    containing the variable in front of the queue (cndvar(fp))
-    then remove front variable (cndvar(fp)) and replace it by
-    the next variable (cndvar(fp+1)). If no more variables are
-    at the front of the queue, stop. */
+    /* no more clauses in the clause variable list (clause_variable_list)
+     * containing the variable in front of the queue (condition_var_queue(fp))
+     * then remove front variable (condition_var_queue(fp)) and replace it by
+     * the next variable (condition_var_queue(fp+1)).
+     * If no more variables are at the front of the queue, stop.
+     */
+
     /* next queue variable */
-    fp=fp+1;
+    fp++;
     if (fp < bp)
     {
         /* check out the condition variable */
-        f = 1;
+        front = 1;
         goto b496;
     }
     /* no more conclusion variables on queue */
@@ -291,47 +283,73 @@ int main()
 }
 
 //==========================================================================
-/* Routine to instantiate a variable (v) if it isn't already.
-The instantiate indication (instlt) is a 0 if not, a 1 if it is.
-The vriable list (varlt) contains the variable (v) */
-void check_instantiation()
+/* Routine to instantiate a variable if it isn't already.
+ * The instantiate indication (instantiated_list) is a 0 if not instantiated, and a 1 if it is.
+ * The variable list (variable_list) contains the variable (variable).
+ */
+void check_instantiation(string variable)
 {
-    i=1;
-
     /* find variable in the variable list */
-    while ((strcmp(v, varlt[i]) != 0) && (i <= 10)) i = i+1;
-
+    int counter = 0;
+    int x = 0;
+    int y;
+    while (x < 10)
+    {
+        y = 0;
+        while ((variable != variable_list[x][y]) && (y < 7))
+        {
+            counter++;
+            y++;
+        }
+        if ((variable == variable_list[x][y]) && (y < 7))
+        {
+            x = 10;
+        }
+        x++;
+    }
     /* check if already instantiated */
-    if (instlt[i] != 1)
+    if (instantiated_list[counter] == 0)
     {
         /* mark instantiated */
-        instlt[i] = 1;
+        instantiated_list[counter] = 1;
+
         /* the designer of this knowledge base places the input
         statements to instantiate the variables in this case
         statement */
 
-        switch (i)
+        // counter = which variable is it in the variable list
+        // ex: counter = 1 is natural, counter = 2 is outer space, etc.
+        switch (counter)
         {
             /* input statements for sample position knowledge base */
+            // user responds with YES or NO
             case 1:
-                printf("RISE OR FALL FOR DO? ");
-                gets(dollar);
+                cout << "Are you interested in natural science? ";
+                cin >> natural;
                 break;
             case 2:
-                printf("RISE OR FALL FOR FT? ");
-                gets(fedint);
+                cout << "Do you like outer space? ";
+                cin >> space;
                 break;
             case 3:
-                printf("ADD OR SUBTRACT FOR FM? ");
-                gets(fedmon);
+                cout << "Are you curious about the motion and behavior of matter? ";
+                cin >> motion;
                 break;
             case 4:
-                printf("RISE OR FALL FOR IN? ");
-                gets(interest);
+                cout << "Are you interested in the composition of living organisms? ";
+                cin >> organisms;
                 break;
             case 5:
-                printf("RISE OR FALL FOR ST? ");
-                gets(stock);
+                cout << "Are you interested in composition science? ";
+                cin >> composition;
+                break;
+            case 6:
+                cout << "Do chemical reactions fascinate you? ";
+                cin >> reactions;
+                break;
+            case 7:
+                cout << "Are you interested in studying the Earth's physical structure? ";
+                cin >> earth;
                 break;
         }
     }
@@ -339,55 +357,81 @@ void check_instantiation()
 }
 
 //==========================================================================
-/* Search clause variable list for a varialbe (clvarlt) equal to the
-one in front of the conclusion queue (cndvar). Return the statement
-number (sn). If there is no match, i.e., sn=0, the first statement
-for the space is f. */
-void search()
+/* Search clause variable list for a variable (clause_variable_list) equal to the
+ * one in front of the conclusion queue (condition_var_queue).
+ * Return the statement number (sn).
+ * If there is no match (if sn = 0), the first statement for the space is f.
+ */
+void search(int *sn, int cn, int *f, int *fp)
 {
-    flag = 0;
-    sn = f;
+    int k = 0;
+    int flag = 0;
+    *sn = *f;
 
-    while ((flag == 0) && (sn <= 10))
+    while ((flag == 0) && (*sn <= 10))
     {
-        cn=1;
-        k = (sn-1)*4+cn;
-        while ((strcmp(clvarlt[k], cndvar[fp]) != 0) && (cn < 4))
+        cn = 1;
+        k = 4 * (*sn-1) + cn;
+        while ((clause_variable_list[k] != condition_var_queue[*fp]) && (cn < 4))
         {
-            cn = cn+1;
-            k = (sn-1)*4+cn;
+            cn++;
+            k = 4 * (*sn-1) + cn;
         }
 
-        if (strcmp(clvarlt[k], cndvar[fp]) == 0) flag = 1;
-        if (flag == 0) sn = sn+1;
+        if (clause_variable_list[k] == condition_var_queue[*fp])
+            flag = 1;
+        if (flag == 0)
+            sn++;
     }
-    if (flag == 0) sn=0;
+    if (flag == 0)
+        *sn = 0; // I'm not too sure about this??
 }
 
 //==========================================================================
-/* Routine to instantiate a varialbe (v) and then place it on the
-back of the queu (cndvar[bp]), if it is not already there. */
-void instantiate()
+/* Routine to instantiate a variable (var) and then place it on the
+ * back of the queue (condition_var_queue[bp]), if it is not already there.
+ */
+void instantiate(string variable, int back_pointer)
 {
-    i=1;
-    /* find varialbe in the varialbe list (varlt) */
-    while ((strcmp(v, varlt[i]) != 0) && (i <= 10)) i=i+1;
+    /* find variable in the variable list */
+    int counter = 0;
+    int x = 0;
+    int y;
+    while (x < 10)
+    {
+        y = 0;
+        while ((variable != variable_list[x][y]) && (y < 7))
+        {
+            counter++;
+            y++;
+        }
+        if ((variable == variable_list[x][y]) && (y < 7))
+        {
+            x = 10;
+        }
+        x++;
+    }
 
     /* instantiate it */
-    instlt[i] = 1;
-    i = 1;
+    instantiated_list[counter] = 1;
 
-    /* determine if (v) is or already has been on the queue (cndvar) */
-    while ((strcmp(v, cndvar[i] != 0) && (i <= 10)) i=i+1;
-    /* variable has not been on the queue. Store it in the back of the queue */
-    if (strcmp(v, cndvar[i]) != 0)
+    /* determine if the variable (var) is or already has been on the queue (condition_var_queue) */
+    int q = 0;
+    int a = 0;
+    while ((variable != condition_var_queue[a]) && (a < 70))
     {
-        strcpy(cndvar[bp], v);
-        bp=bp+1;
+        q++;
+        a++;
+    }
+
+    /* variable has not been on the queue. Store it in the back of the queue */
+    if (variable != condition_var_queue[q])
+    {
+        condition_var_queue[back_pointer] = variable;
+        back_pointer++;
     }
 }
 
 //
 // Created by Victor Hernandez, Jr. on 3/1/2020.
 //
-
