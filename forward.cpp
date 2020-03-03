@@ -18,9 +18,16 @@ string clause_variable_list[200];   // (10 majors * 5 rules * 4 spaces = 200)
 
 string var;     // variable
 string area;    // i.e. Astronomy, Nursing, Marketing, etc.
-string natural, space, motion, organisms, composition, reactions, earth;    // SCIENCE
-string aid, health, teeth, eyes, research, drugs, animals;                  // HEALTH
-string money, recording, large_sums, wealth, people, leader, promoting;     // BUSINESS
+string natural, space, motion, organisms, composition, reactions, earth;        // SCIENCE
+string aid, health, teeth, eyes, research, drugs, animals;                      // HEALTH
+string money, recording, large_sums, wealth, people, leader, promoting;         // BUSINESS
+string pure, variables, shapes, natural_nums, practical, proofs, data;          // MATH
+string design, code, electric, infrastru, discover, manufacture, nuclear;       // ENGINEERING
+string stage, drama, rhythm, compose, behind, creative, art_history;            // FINE ARTS
+string young, crafts, passion, basics, old, middle, high;                       // EDUCATION
+string learning, mind, morals, identity, studying, reading, writing;            // LIBERAL ARTS
+string public_comm, politics, convincing, image, private_comm, language, news;  // COMM
+string family, problems, management, communities, community, justice, military; // APPLIED ARTS
 
 int instantiated_list[70];  /* instantiated list of variables */
 int s;
