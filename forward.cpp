@@ -158,8 +158,8 @@ int main()
     for (int i = 0; i < 10; i++)
     {
         for (int j = 0; j < 7; j++) {
-            if (variable_list[i][j].empty())
-                continue;
+            //if (variable_list[i][j].empty())
+                //continue;
             cout << "ENTER VARIABLE [" << i << "][" << j << "]: " << variable_list[i][j] << endl;
         }
     }
@@ -196,6 +196,102 @@ int main()
     clause_variable_list[33] = "drugs";
     clause_variable_list[36] = "research";
     clause_variable_list[37] = "animals";
+
+    // BUSINESS
+    clause_variable_list[40] = "aid";
+    clause_variable_list[41] = "health";
+    clause_variable_list[44] = "aid";
+    clause_variable_list[45] = "teeth";
+    clause_variable_list[48] = "aid";
+    clause_variable_list[49] = "eyes";
+    clause_variable_list[52] = "research";
+    clause_variable_list[53] = "drugs";
+    clause_variable_list[56] = "research";
+    clause_variable_list[57] = "animals";
+
+    // MATH
+    clause_variable_list[60] = "aid";
+    clause_variable_list[61] = "health";
+    clause_variable_list[64] = "aid";
+    clause_variable_list[65] = "teeth";
+    clause_variable_list[68] = "aid";
+    clause_variable_list[69] = "eyes";
+    clause_variable_list[72] = "research";
+    clause_variable_list[73] = "drugs";
+    clause_variable_list[76] = "research";
+    clause_variable_list[77] = "animals";
+
+    // ENGINEERING
+    clause_variable_list[80] = "aid";
+    clause_variable_list[81] = "health";
+    clause_variable_list[84] = "aid";
+    clause_variable_list[85] = "teeth";
+    clause_variable_list[88] = "aid";
+    clause_variable_list[89] = "eyes";
+    clause_variable_list[92] = "research";
+    clause_variable_list[93] = "drugs";
+    clause_variable_list[96] = "research";
+    clause_variable_list[97] = "animals";
+
+    // FINE ARTS
+    clause_variable_list[100] = "aid";
+    clause_variable_list[101] = "health";
+    clause_variable_list[104] = "aid";
+    clause_variable_list[105] = "teeth";
+    clause_variable_list[108] = "aid";
+    clause_variable_list[109] = "eyes";
+    clause_variable_list[112] = "research";
+    clause_variable_list[113] = "drugs";
+    clause_variable_list[116] = "research";
+    clause_variable_list[117] = "animals";
+
+    // EDUCATION
+    clause_variable_list[120] = "aid";
+    clause_variable_list[121] = "health";
+    clause_variable_list[124] = "aid";
+    clause_variable_list[125] = "teeth";
+    clause_variable_list[128] = "aid";
+    clause_variable_list[129] = "eyes";
+    clause_variable_list[132] = "research";
+    clause_variable_list[133] = "drugs";
+    clause_variable_list[136] = "research";
+    clause_variable_list[137] = "animals";
+
+    // LIBERAL ARTS
+    clause_variable_list[140] = "aid";
+    clause_variable_list[141] = "health";
+    clause_variable_list[144] = "aid";
+    clause_variable_list[145] = "teeth";
+    clause_variable_list[148] = "aid";
+    clause_variable_list[149] = "eyes";
+    clause_variable_list[152] = "research";
+    clause_variable_list[153] = "drugs";
+    clause_variable_list[156] = "research";
+    clause_variable_list[157] = "animals";
+
+    // COMM
+    clause_variable_list[160] = "aid";
+    clause_variable_list[161] = "health";
+    clause_variable_list[164] = "aid";
+    clause_variable_list[165] = "teeth";
+    clause_variable_list[168] = "aid";
+    clause_variable_list[169] = "eyes";
+    clause_variable_list[172] = "research";
+    clause_variable_list[173] = "drugs";
+    clause_variable_list[176] = "research";
+    clause_variable_list[177] = "animals";
+
+    // APPLIED ARTS
+    clause_variable_list[180] = "aid";
+    clause_variable_list[181] = "health";
+    clause_variable_list[184] = "aid";
+    clause_variable_list[185] = "teeth";
+    clause_variable_list[188] = "aid";
+    clause_variable_list[189] = "eyes";
+    clause_variable_list[192] = "research";
+    clause_variable_list[193] = "drugs";
+    clause_variable_list[196] = "research";
+    clause_variable_list[197] = "animals";
 
     cout <<  "*** CLAUSE-VARIABLE LIST ***" << endl;
     int k;
