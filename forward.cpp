@@ -21,8 +21,8 @@ string area;    // i.e. Astronomy, Nursing, Marketing, etc.
 string natural, space, motion, organisms, composition, reactions, earth;        // SCIENCE
 string aid, health, teeth, eyes, research, drugs, animals;                      // HEALTH
 string money, recording, large_sums, wealth, people, leader, promoting;         // BUSINESS
-string pure, variables, shapes, natural_nums, practical, proofs, data;          // MATH
-string design, code, electric, infrastru, discover, manufacture, nuclear;       // ENGINEERING
+string pure, variables, shapes, natural, practical, proofs, data;               // MATH
+string design, code, electric, infra, discover, manufacture, nuclear;           // ENGINEERING
 string stage, drama, rhythm, compose, behind, creative, art_history;            // FINE ARTS
 string young, crafts, passion, basics, old, middle, high;                       // EDUCATION
 string learning, mind, morals, identity, studying, reading, writing;            // LIBERAL ARTS
@@ -81,6 +81,78 @@ int main()
     variable_list[1][4] = "research";
     variable_list[1][5] = "drugs";
     variable_list[1][6] = "animals";
+
+    // BUSINESS
+    variable_list[2][0] = "money";
+    variable_list[2][1] = "recording";
+    variable_list[2][2] = "large sums";
+    variable_list[2][3] = "wealth";
+    variable_list[2][4] = "people";
+    variable_list[2][5] = "leader";
+    variable_list[2][6] = "promoting";
+
+    // MATH
+    variable_list[3][0] = "pure";
+    variable_list[3][1] = "variables";
+    variable_list[3][2] = "shapes";
+    variable_list[3][3] = "natural";
+    variable_list[3][4] = "practical";
+    variable_list[3][5] = "proofs";
+    variable_list[3][6] = "data";
+
+    // ENGINEERING
+    variable_list[4][0] = "design";
+    variable_list[4][1] = "code";
+    variable_list[4][2] = "electric";
+    variable_list[4][3] = "infra";
+    variable_list[4][4] = "discover";
+    variable_list[4][5] = "manufacture";
+    variable_list[4][6] = "nuclear";
+
+    // FINE ARTS
+    variable_list[5][0] = "stage";
+    variable_list[5][1] = "drama";
+    variable_list[5][2] = "rhythm";
+    variable_list[5][3] = "compose";
+    variable_list[5][4] = "behind";
+    variable_list[5][5] = "creative";
+    variable_list[5][6] = "art history";
+
+    // EDUCATION
+    variable_list[6][0] = "young";
+    variable_list[6][1] = "crafts";
+    variable_list[6][2] = "passion";
+    variable_list[6][3] = "basics";
+    variable_list[6][4] = "old";
+    variable_list[6][5] = "middle";
+    variable_list[6][6] = "high";
+
+    // LIBERAL ARTS
+    variable_list[7][0] = "learning";
+    variable_list[7][1] = "mind";
+    variable_list[7][2] = "morals";
+    variable_list[7][3] = "identity";
+    variable_list[7][4] = "studying";
+    variable_list[7][5] = "reading";
+    variable_list[7][6] = "writing";
+
+    // COMM
+    variable_list[8][0] = "public";
+    variable_list[8][1] = "politics";
+    variable_list[8][2] = "convincing";
+    variable_list[8][3] = "image";
+    variable_list[8][4] = "private";
+    variable_list[8][5] = "language";
+    variable_list[8][6] = "news";
+
+    // APPLIED ARTS
+    variable_list[9][0] = "family";
+    variable_list[9][1] = "problems";
+    variable_list[9][2] = "management";
+    variable_list[9][3] = "communities";
+    variable_list[9][4] = "community";
+    variable_list[9][5] = "justice";
+    variable_list[9][6] = "military";
 
     cout <<  "*** VARIABLE LIST ***" << endl;
     for (int i = 0; i < 10; i++)
