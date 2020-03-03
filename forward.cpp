@@ -332,33 +332,24 @@ int main()
     int front = 1;
     int clause = 0;
 
-    cout << "START SEARCH" << endl;
+
     b496: search(&sn, cn, &front, &fp);
-    cout << "END SEARCH" << endl;
     /* point to first clause in statement */
     cn = 1;
     if (sn != 0)
         /* more statements */
     {
-        cout << "cn = " << cn << endl;
-        cout << "sn = " << sn << endl;
         /* locate the clause */
         clause = 4 * (sn-1) + cn;
-        cout << "clause = 4 * (sn - 1) + cn = " << clause << endl;
 
         /* clause variable */
         var = clause_variable_list[clause-1];
-        cout << "var = clause_variable_list[clause-1] = " << var << endl;
 
         /* are there any more clauses for this statement */
-        cout << "var == \"\"? " << var.empty() << endl;
         while (!var.empty())
             /* more clauses */
         {
-            cout << "entered while" << endl;
             /* check instantiation of this clause */
-            check_instantiation(var);
-            cout << "finished check_instantiation" << endl;
             cn++;
 
             /* check next clause */
@@ -543,305 +534,305 @@ int main()
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var, bp);
-                break;
+                return 0;
                 /* put variable on the conclusion variable queue */
             case 2:
                 area = "Physics";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var, bp);
-                break;
+                return 0;
                 /* put variable on the conclusion variable queue */
             case 3:
                 area = "Biology";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var, bp);
-                break;
+                return 0;
                 /* put variable on the conclusion variable queue */
             case 4:
                 area = "Chemistry";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var, bp);
-                break;
+                return 0;
                 /* put variable on the conclusion variable queue */
             case 5:
                 area = "Geology";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var, bp);
-                break;
+                return 0;
             case 6:
                 area = "Nursing";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 7:
                 area = "Dentistry";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 8:
                 area = "Optometry";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 9:
                 area = "Pharmaceutical Research";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 10:
                 area = "Veterinary";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 11:
                 area = "Accounting";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 12:
                 area = "Finance";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 13:
                 area = "Economics";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 14:
                 area = "Management";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 15:
                 area = "Marketing";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 16:
                 area = "Algebra";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 17:
                 area = "Geometry";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 18:
                 area = "Number Theory";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 19:
                 area = "Applied Mathematics";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 20:
                 area = "Statistics";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 21:
                 area = "Computer Engineering";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 22:
                 area = "Electrical Engineering";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 23:
                 area = "Civil Engineering";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 24:
                 area = "Chemical Engineering";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 25:
                 area = "Nuclear Engineering";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 26:
                 area = "Theatre";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 27:
                 area = "Dance";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 28:
                 area = "Music";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 29:
                 area = "Studio Art";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 30:
                 area = "Art History";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 31:
                 area = "Preschool Education";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 32:
                 area = "Special Education";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 33:
                 area = "Elementary Education";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 34:
                 area = "Middle School Education";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 35:
                 area = "High School Education";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 36:
                 area = "Psychology";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 37:
                 area = "Philosophy";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 38:
                 area = "Gender Studies";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 39:
                 area = "History";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 40:
                 area = "English";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 41:
                 area = "Politics";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 42:
                 area = "Marketing";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 43:
                 area = "Public Relations";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 44:
                 area = "Multilinguistics";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 45:
                 area = "Journalism";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 46:
                 area = "Social Work";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 47:
                 area = "Organization Management and Leadership";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 48:
                 area = "Family Consumer Services";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 49:
                 area = "Criminal Justice";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             case 50:
                 area = "Military Science";
                 cout << "Area of Study = " << area << endl;
                 var = "area";
                 instantiate(var , bp);
-                break;
+                return 0;
             default:
                 cout << "ERROR - Try Again" << endl;
                 return -1;
@@ -876,7 +867,6 @@ int main()
  */
 void check_instantiation(string variable)
 {
-    cout << "check_instantiation" << endl;
     /* find variable in the variable list */
     int counter = 0;
     int x = 0;
@@ -884,29 +874,18 @@ void check_instantiation(string variable)
     while (x < 10)
     {
         y = 0;
-        cout << "counter = " << counter << endl;
-        cout << "x = " << x << endl;
-        cout << "y = " << y << endl;
-        cout << "variable = " << variable << endl;
-        cout << "variable_list[x][y] = " << variable_list[x][y] << endl;
         while ((variable != variable_list[x][y]) && (y < 7))
         {
             counter++;
             y++;
-            cout << "counter++ = " << counter << endl;
-            cout << "y++ = " << y << endl;
         }
         if ((variable == variable_list[x][y]) && (y < 7))
         {
             x = 10;
-            cout << "they match!!!" << endl;
         }
         x++;
     }
-    cout << "exit the instantiation while loop" << endl;
     /* check if already instantiated */
-    cout << "counter is now " << counter << endl;
-    cout << "instantiated_list[counter] = " << instantiated_list[counter] << endl;
     if (instantiated_list[counter] == 0)
     {
         /* mark instantiated */
@@ -918,7 +897,7 @@ void check_instantiation(string variable)
 
         // counter = which variable is it in the variable list
         // ex: counter = 1 is natural, counter = 2 is outer space, etc.
-        switch (counter)
+        switch (counter + 1)
         {
             /* input statements for sample position knowledge base */
             // user responds with YES or NO
