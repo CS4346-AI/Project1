@@ -36,7 +36,7 @@ void search(int*, int, int*, int*);
 void check_instantiation(string);
 void instantiate(string, int);
 
-int main()
+int forward()
 {
     /******** INITIALIZATION SECTION ***********/
     for (int i = 0; i < 10; i++)
@@ -154,6 +154,7 @@ int main()
     variable_list[9][5] = "justice";
     variable_list[9][6] = "military";
 
+    /*
     cout <<  "*** VARIABLE LIST ***" << endl;
     for (int i = 0; i < 10; i++)
     {
@@ -164,6 +165,7 @@ int main()
     }
     cout << "HIT RETURN TO CONTINUE";
     cin.ignore();
+     */
 
 
     /* enter variables as they appear in the IF clauses, Up to 3
@@ -292,6 +294,7 @@ int main()
     clause_variable_list[196] = "community";
     clause_variable_list[197] = "military";
 
+    /*
     cout <<  "*** CLAUSE-VARIABLE LIST ***" << endl;
     int k;
     for (int i = 0; i < 50; i++)
@@ -305,11 +308,13 @@ int main()
     }
     cout << "HIT RETURN TO CONTINUE";
     cin.ignore();
+     */
+
 
     /****** INFERENCE SECTION *****************/
     string user_input;
-    cout << "\nENTER CONDITION VARIABLE? ";
-    cin >> user_input;
+    cout << "PLEASE ANSWER THE FOLLOWING QUESTIONS WITH 'YES' OR 'NO' AS APPROPRIATE." << endl;
+    //cin >> user_input;
 
     /* place condition variable user_input on condition var queue */
     int fp = 1; // front pointer
@@ -350,6 +355,7 @@ int main()
             /* more clauses */
         {
             /* check instantiation of this clause */
+            check_instantiation(var);
             cn++;
 
             /* check next clause */
@@ -930,255 +936,255 @@ void check_instantiation(string variable)
                 cin >> earth;
                 break;
             case 8:
-                cout << "Do you like to provide aid to people in need?";
+                cout << "Do you like to provide aid to people in need? ";
                 cin >> aid;
                 break;
             case 9:
-                cout << "Do you care for one's overall health?";
+                cout << "Do you care for one's overall health? ";
                 cin >> health;
                 break;
             case 10:
-                cout << "Does dental work interest you?";
+                cout << "Does dental work interest you? ";
                 cin >> teeth;
                 break;
             case 11:
-                cout << "Are you fascinated by the human eye?";
+                cout << "Are you fascinated by the human eye? ";
                 cin >> eyes;
                 break;
             case 12:
-                cout << "Do you like to research how to help living organisms?";
+                cout << "Do you like to research how to help living organisms? ";
                 cin >> research;
                 break;
             case 13:
-                cout << "Are you interested in drug development?";
+                cout << "Are you interested in drug development? ";
                 cin >> drugs;
                 break;
             case 14:
-                cout << "Do you like animals?";
+                cout << "Do you like animals? ";
                 cin >> animals;
                 break;
             case 15:
-                cout << "Do you like working with money?";
+                cout << "Do you like working with money? ";
                 cin >> money;
                 break;
             case 16:
-                cout << "Are you comfortable with recording financial information?";
+                cout << "Are you comfortable with recording financial information? ";
                 cin >> recording;
                 break;
             case 17:
-                cout << "Can you handle large sums of money?";
+                cout << "Can you handle large sums of money? ";
                 cin >> large_sums;
                 break;
             case 18:
-                cout << "Are you interested in the production/consumption of wealth?";
+                cout << "Are you interested in the production/consumption of wealth? ";
                 cin >> wealth;
                 break;
             case 19:
-                cout << "Do you like working with people?";
+                cout << "Do you like working with people? ";
                 cin >> people;
                 break;
             case 20:
-                cout << "Would you consider yourself as a leader?";
+                cout << "Would you consider yourself as a leader? ";
                 cin >> leader;
                 break;
             case 21:
-                cout << "Are you good at promoting products?";
+                cout << "Are you good at promoting products? ";
                 cin >> promoting;
                 break;
             case 22:
-                cout << "Do you like pure math?";
+                cout << "Do you like pure math? ";
                 cin >> pure;
                 break;
             case 23:
-                cout << "Can you solve equations using variables?";
+                cout << "Can you solve equations using variables? ";
                 cin >> variables;
                 break;
             case 24:
-                cout << "Do you like shapes?";
+                cout << "Do you like shapes? ";
                 cin >> shapes;
                 break;
             case 25:
-                cout << "Are you interested in studying natural numbers?";
+                cout << "Are you interested in studying natural numbers? ";
                 cin >> natural_nums;
                 break;
             case 26:
-                cout << "Do you like practical math?";
+                cout << "Do you like practical math? ";
                 cin >> practical;
                 break;
             case 27:
-                cout << "Do you like equations and proofs?";
+                cout << "Do you like equations and proofs? ";
                 cin >> proofs;
                 break;
             case 28:
-                cout << "Do you like collecting and analyzing data?";
+                cout << "Do you like collecting and analyzing data? ";
                 cin >> data;
                 break;
             case 29:
-                cout << "Are you interested in designing a product?";
+                cout << "Are you interested in designing a product? ";
                 cin >> design;
                 break;
             case 30:
-                cout << "Do you like to code?";
+                cout << "Do you like to code? ";
                 cin >> code;
                 break;
             case 31:
-                cout << "Do you like electrical systems?";
+                cout << "Do you like electrical systems? ";
                 cin >> electric;
                 break;
             case 32:
-                cout << "Are you interested in infrastructure?";
+                cout << "Are you interested in infrastructure? ";
                 cin >> infra;
                 break;
             case 33:
-                cout << "Are you interested in discovering a product?";
+                cout << "Are you interested in discovering a product? ";
                 cin >> discover;
                 break;
             case 34:
-                cout << "Do you like developing manufacturing processes?";
+                cout << "Do you like developing manufacturing processes? ";
                 cin >> manufacture;
                 break;
             case 35:
-                cout << "Are you familiar with nuclear physics?";
+                cout << "Are you familiar with nuclear physics? ";
                 cin >> nuclear;
                 break;
             case 36:
-                cout << "Do you like performing on stage?";
+                cout << "Do you like performing on stage? ";
                 cin >> stage;
                 break;
             case 37:
-                cout << "Would you consider yourself dramatic?";
+                cout << "Would you consider yourself dramatic? ";
                 cin >> drama;
                 break;
             case 38:
-                cout << "Do you have rhythm?";
+                cout << "Do you have rhythm? ";
                 cin >> rhythm;
                 break;
             case 39:
-                cout << "Do you like to music?";
+                cout << "Do you like to music? ";
                 cin >> compose;
                 break;
             case 40:
-                cout << "Would you rather be offstage?";
+                cout << "Would you rather be offstage? ";
                 cin >> behind;
                 break;
             case 41:
-                cout << "Do you consider yourself being a creative person?";
+                cout << "Do you consider yourself being a creative person? ";
                 cin >> creative;
                 break;
             case 42:
-                cout << "Are you interested in the compostition of famous art?";
+                cout << "Are you interested in the compostition of famous art? ";
                 cin >> art_history;
                 break;
             case 43:
-                cout << "Do you like working with younger kids?";
+                cout << "Do you like working with younger kids? ";
                 cin >> young;
                 break;
             case 44:
-                cout << "Do you like arts and crafts?";
+                cout << "Do you like arts and crafts? ";
                 cin >> crafts;
                 break;
             case 45:
-                cout << "Would you like to help children with disabilities?";
+                cout << "Would you like to help children with disabilities? ";
                 cin >> passion;
                 break;
             case 46:
-                cout << "Would you like to teach elementary education?";
+                cout << "Would you like to teach elementary education? ";
                 cin >> electric;
                 break;
             case 47:
-                cout << "Do you like older kids?";
+                cout << "Do you like older kids? ";
                 cin >> old;
                 break;
             case 48:
-                cout << "Would you like to teach at middle schools?";
+                cout << "Would you like to teach at middle schools? ";
                 cin >> middle;
                 break;
             case 49:
-                cout << "Would you like to teach at high schools?";
+                cout << "Would you like to teach at high schools? ";
                 cin >> high;
                 break;
             case 50:
-                cout << "Do you like to learn?";
+                cout << "Do you like to learn? ";
                 cin >> learning;
                 break;
             case 51:
-                cout << "Are you interested in learning about the human mind?";
+                cout << "Are you interested in learning about the human mind? ";
                 cin >> mind;
                 break;
             case 52:
-                cout << "Are you interested in learning about ethics and morals?";
+                cout << "Are you interested in learning about ethics and morals? ";
                 cin >> learning;
                 break;
             case 53:
-                cout << "Are you interested in learning about feminism and identities?";
+                cout << "Are you interested in learning about feminism and identities? ";
                 cin >> identity;
                 break;
             case 54:
-                cout << "Do you like to study?";
+                cout << "Do you like to study? ";
                 cin >> studying;
                 break;
             case 55:
-                cout << "Do you like to read?";
+                cout << "Do you like to read? ";
                 cin >> reading;
                 break;
             case 56:
-                cout << "Do you like to write?";
+                cout << "Do you like to write? ";
                 cin >> writing;
                 break;
             case 57:
-                cout << "Do you like intercommunication?";
+                cout << "Do you like intercommunication? ";
                 cin >> pub;
                 break;
             case 58:
-                cout << "Are you interested in politics?";
+                cout << "Are you interested in politics? ";
                 cin >> politics;
                 break;
             case 59:
-                cout << "Are you able to convince people easily?";
+                cout << "Are you able to convince people easily? ";
                 cin >> convincing;
                 break;
             case 60:
-                cout << "Are you interested in maintaining a company's public image?";
+                cout << "Are you interested in maintaining a company's public image? ";
                 cin >> image;
                 break;
             case 61:
-                cout << "Do you like intracommunication?";
+                cout << "Do you like intracommunication? ";
                 cin >> priv;
                 break;
             case 62:
-                cout << "Are you interested in studying langauges?";
+                cout << "Are you interested in studying languages? ";
                 cin >> language;
                 break;
             case 63:
-                cout << "Do you like to keep up to date with the news?";
+                cout << "Do you like to keep up to date with the news? ";
                 cin >> news;
                 break;
             case 64:
-                cout << "Do you like helping/working with families?";
+                cout << "Do you like helping/working with families? ";
                 cin >> family;
                 break;
             case 65:
-                cout << "Do you like to help people with their personal problems?";
+                cout << "Do you like to help people with their personal problems? ";
                 cin >> problems;
                 break;
             case 66:
-                cout << "Do you like leading people in the right direction?";
+                cout << "Do you like leading people in the right direction? ";
                 cin >> management;
                 break;
             case 67:
-                cout << "Do you like helping people make informed decisions?";
+                cout << "Do you like helping people make informed decisions? ";
                 cin >> communities;
                 break;
             case 68:
-                cout << "Do you like helping/working with communities?";
+                cout << "Do you like helping/working with communities? ";
                 cin >> community;
                 break;
             case 69:
-                cout << "Do you like to serve justice?";
+                cout << "Do you like to serve justice? ";
                 cin >> justice;
                 break;
             case 70:
-                cout << "Are you interested in studying about military welfare?";
+                cout << "Are you interested in studying about military welfare? ";
                 cin >> military;
                 break;
             default:
@@ -1268,7 +1274,3 @@ void instantiate(string variable, int back_pointer)
         back_pointer++;
     }
 }
-
-//
-// Created by Victor Hernandez, Jr. on 3/1/2020.
-//
